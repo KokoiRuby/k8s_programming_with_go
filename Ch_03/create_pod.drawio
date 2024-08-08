@@ -1,0 +1,97 @@
+<mxfile host="Electron" modified="2024-08-08T05:06:15.021Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="4f0ge1I9ovXre-HE44dM" version="21.6.1" type="device">
+  <diagram name="Page-1" id="6RotF6Kkoed3Y5r-0wfT">
+    <mxGraphModel dx="819" dy="482" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="2339" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-3" target="DZsX4ZuEP-fXO9HatSY_-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="476.48571428571427" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-3" value="NewPod()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="424" y="475" width="105" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-4" value="Pod Constructor&lt;br&gt;returns *corev1.Pod" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="481.5" width="118" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-10" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-7" target="DZsX4ZuEP-fXO9HatSY_-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-7" value="getJSONSerializer()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="403" y="562" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-8" value="Add Pod Type to Scheme so that it could resolve&lt;br&gt;returns&amp;nbsp;runtime.Serializer" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="568.5" width="290" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-9" target="DZsX4ZuEP-fXO9HatSY_-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-9" value="serializePodObject()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="403" y="651" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-11" value="Serialize/Encode Pod to byte.Buffer as request body" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="657.5" width="316" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-12" target="DZsX4ZuEP-fXO9HatSY_-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-12" value="buildPostRequest()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="403" y="740" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-14" value="http.NewRequest &amp;lt;- verb + URI + body + header" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="746.5" width="281" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-19" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-15" target="DZsX4ZuEP-fXO9HatSY_-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-15" value="&amp;amp;http.Client{}.Do()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="403" y="828" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-17" value="Send Request &amp;amp; get Response" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="834.5" width="180" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-18" target="DZsX4ZuEP-fXO9HatSY_-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-18" value="ioutil.ReadAll()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="403" y="913" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-20" value="Read Response&amp;nbsp;Body" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="573" y="919.5" width="126" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-27" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-22" target="DZsX4ZuEP-fXO9HatSY_-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-30" value="F" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" connectable="0" parent="DZsX4ZuEP-fXO9HatSY_-27">
+          <mxGeometry x="0.4267" y="-1" relative="1" as="geometry">
+            <mxPoint y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=12;fontColor=default;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="DZsX4ZuEP-fXO9HatSY_-22" target="DZsX4ZuEP-fXO9HatSY_-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-29" value="T" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Helvetica;fontColor=default;" vertex="1" connectable="0" parent="DZsX4ZuEP-fXO9HatSY_-28">
+          <mxGeometry x="0.3423" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-22" value="Status.Code&lt;br&gt;&amp;lt; 300" style="rhombus;whiteSpace=wrap;html=1;rounded=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="429" y="995" width="95" height="79" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-25" value="deserializePodBody()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1105" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-26" value="deserializeStatusBody()" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Comic Sans MS;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="1">
+          <mxGeometry x="526" y="1105" width="147" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-31" value="[]Byte →&amp;nbsp;*metav1.Status" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="523.25" y="1172" width="152.5" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="DZsX4ZuEP-fXO9HatSY_-32" value="[]Byte →&amp;nbsp;*corev1.Pod" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontFamily=Comic Sans MS;" vertex="1" parent="1">
+          <mxGeometry x="296.25" y="1172" width="134.5" height="39" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
