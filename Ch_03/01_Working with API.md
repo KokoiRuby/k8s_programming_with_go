@@ -41,6 +41,36 @@ In addition to Kind structures, **utility methods** for specific types can be us
   - `Storage()`
   - `Pods()`
   - `StorageEphemeral()`
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: runtime
+      resources:
+        requests:
+          cpu: "250m"
+          memory: "64Mi"
+        limits:
+          cpu: "500m"
+          memory: "128Mi"
+```
+
+```go
+requests := corev1.ResourceList{
+	corev1.ResourceCPU:    *resource.NewQuantity(250, resource.BinarySI),
+	corev1.ResourceMemory: *resource.NewQuantity(64*1024*1024, resource.BinarySI),
+}
+
+limits := corev1.ResourceList{
+	corev1.ResourceCPU:    *resource.NewQuantity(500, resource.BinarySI),
+	corev1.ResourceMemory: *resource.NewQuantity(128*1024*1024, resource.BinarySI),
+}
+```
+
 - `Taint`: applied to Nodes to ensure that pods to be scheduled on.
   - TaintEffect (enum)
     - NoSchedule
@@ -146,10 +176,71 @@ myLabel2 := labels.Set{
 
 **OwnerReferences**: indicate resource is owned by another. Deployment → ReplicaSet.
 
+**It is used widely when developing controllers and operators.** A controller or operator creates some resources to implement the specifications described by another resource, and it places an **OwnerReference** into the created resources, pointing to the resource giving the specifications.
+
+```go
+// need to construct by setting these fields
+type OwnerReference struct {
+	APIVersion string        
+	Kind string
+	Name string
+	UID types.UID            // To know the UID of the obj to ref, need to get obj from k8s API using get/list
+    Controller *bool         // A controller/operator must set this val to true 
+	BlockOwnerDeletion *bool 
+}
+```
+
 - Setting APIVersion and Kind
 
-- Setting Controller
+```go
+// setup a clientset
+clientSet, err := getClientSet()
+if err != nil {
+    panic(err)
+}
+
+// get pod
+pod, err := clientSet.CoreV1().Pods("myns").Get(context.TODO(), "mypodname", metav1.GetOptions{})
+if err != nil {
+    panic(err)
+}
+
+// Solution 1: set the APIVersion and Kind of the Pod then copy all info from the pod
+pod.SetGroupVersionKind(corev1.SchemeGroupVersion.WithKind("Pod"))
+ownerRef := metav1.OwnerReference{
+    APIVersion: pod.APIVersion,
+    Kind:       pod.Kind,
+    Name:       pod.GetName(),
+    UID:        pod.GetUID(),
+}
+_ = ownerRef
+
+// Solution 2: Copy name and UID from pod then set APIVersion and Kind on the OwnerReference
+ownerRef = metav1.OwnerReference{
+    Name: pod.GetName(),
+    UID:  pod.GetUID(),
+}
+ownerRef.APIVersion, ownerRef.Kind = corev1.SchemeGroupVersion.WithKind("Pod").ToAPIVersionAndKind()
+```
+
+- Setting Controller, must be a bool ptr.
+
+```go
+// Solution 1: declare a value and use its address
+controller := true
+ownerRef.Controller = &controller
+
+// Solution 2: use the BoolPtr function
+ownerRef.Controller = pointer.BoolPtr(controller)
+```
+
 - Setting BlockOwnerDeletion
+  - Propagation Policy on Delete
+    - Orphan: not deleted by GC
+    - Background: non-blocking GC
+    - Foreground: blocking GC
+  - if you are writing a controller or another process that **needs to wait for all the**
+    **owned resources to be deleted**, the process will need to set the BlockOwnerDeletion to true on all the owned resources and to use the **Foreground propagation policy** when deleting the owner resource.
 
 ### Spec & Status
 
@@ -189,4 +280,20 @@ pod := corev1.Pod{
         },
     },
 }
+
+// or
+pod1 := corev1.Pod{
+	Spec: corev1.PodSpec{
+		Containers: []corev1.Container{
+			{
+				Name:  "runtime",
+				Image: "nginx",
+			},
+		},
+	},
+}
+pod1.SetName("my-pod")
+pod1.SetLabels(map[string]string{
+	"component": "my-component",
+})
 ```
