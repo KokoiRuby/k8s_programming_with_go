@@ -188,10 +188,12 @@ Decode(
 
 ## RESTMapper
 
-REST resources → Kinds
+REST resources → Kinds, so that corresponding REST request can be well-handled.
 
-- **GVR** (REST view): to build the path to which to make a request. `/apis/apps/v1/deployments`
+- **GVR** (REST view): to build the path to which to make a request. 
 - **GVK** (API view): associate with GVR
+
+The **RESTMapping** structure brings together a **Resource** and its associated **GroupVersionKind**.
 
 ```go
 import (
@@ -200,20 +202,31 @@ import (
 ```
 
 ```go
+type RESTMapping struct {
+	// Resource is the GroupVersionResource (location) for this endpoint
+	Resource schema.GroupVersionResource
+	// GroupVersionKind is the GroupVersionKind (data format) to submit to this endpoint
+	GroupVersionKind schema.GroupVersionKind
+	// Scope contains the information needed to deal with REST Resources that are in a resource hierarchy
+	Scope RESTScope
+}
+```
+
+```go
 type RESTMapper interface {
-    // kind → resource
+    // kind → resource 
     RESTMapping(gk schema.GroupKind, versions ...string)
           (*RESTMapping, error)
     RESTMappings(gk schema.GroupKind, versions ...string)
            ([]*RESTMapping, error)
     
-    // resource → kind
+    // resource → kind, returns GVK
     KindFor(resource schema.GroupVersionResource)
            (schema.GroupVersionKind, error)
     KindsFor(resource schema.GroupVersionResource)
            ([]schema.GroupVersionKind, error)
     
-    // find resource based on name
+    // returns GVR
     ResourceFor(input schema.GroupVersionResource)
            (schema.GroupVersionResource, error)
     ResourcesFor(input schema.GroupVersionResource)
@@ -236,5 +249,15 @@ Add(kind schema.GroupVersionKind, scope RESTScope)
 AddSpecific(kind schema.GroupVersionKind,
 	plural, singular schema.GroupVersionResource,
 	scope RESTScope)
+```
+
+Example
+
+```go
+restMapper := meta.NewDefaultRESTMapper(groupVer)
+// /apis/apps/v1/deployments
+restMapper.Add(appsv1.SchemeGroupVersion.WithKind("Deployment"), nil)
+// /apis/apps/v1beta/deployments
+restMapper.Add(appsv1beta1.SchemeGroupVersion.WithKind("Deployment"), nil)
 ```
 
