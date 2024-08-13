@@ -5,6 +5,7 @@ import (
 	"fmt"
 	appsv1 "k8s.io/api/apps/v1"
 	appsv1beta1 "k8s.io/api/apps/v1beta1"
+	"k8s.io/api/core/v1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/conversion"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -103,4 +104,8 @@ func main() {
 	json := `{"kind": "Deployment", "apiVersion": "apps/v1", "metadata":{"name":"myname"}}`
 	_, groupVersionKind, _ := jsonSerializer.Decode([]byte(json), nil, &decodedDeployment)
 	fmt.Printf("obj: %v\ngvk: %s\n", decodedDeployment, groupVersionKind)
+
+	// deep copy
+	p := v1.Pod{}
+	p.DeepCopy()
 }
