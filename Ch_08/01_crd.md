@@ -134,15 +134,6 @@ schema:
 Define & Create a CRD.
 
 ```yaml
-
-❽ Short names of the new resource, you can use kubectl get my,
-kubectl get myres
-❾ Adds the resource to the category all; resources of this kind will
-appear when running kubectl get all
-❿ v1alpha1 version is the only version defined for the new
-resource
-⓫ Defines the new resource schema as an object, with no field
-
 apiVersion: apiextensions.k8s.io/v1     # 1. The group and version of the CRD resource
 kind: CustomResourceDefinition          # 2. The kind of the CRD resource
 metadata:
