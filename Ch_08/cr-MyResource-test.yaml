@@ -1,6 +1,0 @@
-apiVersion: mygroup.com/v1
-kind: MyResource
-metadata:
-  name: test
-spec:
-  msg: Hello World!
