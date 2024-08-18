@@ -1,0 +1,11 @@
+apiVersion: mygroup.myid.dev/v1beta1
+kind: MyResource
+metadata:
+  labels:
+    app.kubernetes.io/name: myresource-kb
+    app.kubernetes.io/managed-by: kustomize
+  name: myresource-sample
+spec:
+  # TODO(user): Add fields here
+  image: nginx
+  memoryRequest: 256Mi
